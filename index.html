@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow" data-publish>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Математика — формула успеха · занятия онлайн для 5–11 классов</title>
+<meta name="description" content="Индивидуальные занятия математикой онлайн для учеников 5–11 классов: школьная программа, контрольные работы, подготовка к ОГЭ и ЕГЭ. Демонстрационный сайт для портфолио.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Математика — формула успеха">
+<meta property="og:title" content="Математика — формула успеха">
+<meta property="og:description" content="Обучение математике без пробелов в знаниях – с понятным планом обучения. Индивидуальные занятия онлайн для 5–11 классов.">
+<!-- превью ссылки (Telegram и др.): адреса только полные, относительные не работают -->
+<meta property="og:url" content="https://vladzan77.github.io/matematika-demo/">
+<meta property="og:image" content="https://vladzan77.github.io/matematika-demo/assets/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Деревянная линейка на листе с карандашными чертежами">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%273%27 y=%273%27 width=%2726%27 height=%2726%27 rx=%276%27 fill=%27%23e9b638%27/%3E%3Cpath d=%27M22 7v18%27 stroke=%27%231e2433%27 stroke-width=%272.4%27 stroke-linecap=%27round%27/%3E%3Cpath d=%27M9 12h8M9 17h8M9 22h8%27 stroke=%27%231e2433%27 stroke-width=%271.6%27 stroke-linecap=%27round%27 opacity=%27.55%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Piazzolla:wght@500;600&display=swap">
+<link rel="preload" as="image" href="assets/hero-m.webp" media="(max-width: 860px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/hero.webp" media="(min-width: 861px)" fetchpriority="high">
+<link rel="stylesheet" href="vibe.css">
+<style>
+  html, body { margin: 0; background: #f6f3ec; }
+
+  /* ---- тема: шесть цветов, два шрифта. Плюс цвета тетради (--nb-*) --------- */
+  .v-page {
+    --v-canvas: #f6f3ec; --v-surface: #ffffff;
+    --v-ink: #1e2433; --v-ink-soft: #5a6070;           /* 5,7:1 на бумаге */
+    --v-accent: #e9b638; --v-accent-ink: #1e2433;      /* кнопка 8,3:1 */
+    --v-accent-deep: #7a5a0c;                          /* мелкий акцентный текст, 5,8:1 */
+    --v-font-display: "Piazzolla", "Georgia", "Times New Roman", serif;
+    --v-font-text: "Manrope", "Segoe UI", system-ui, sans-serif;
+    --v-shadow-color: 46 52 70;
+    --v-e1: 0 1px 2px rgb(var(--v-shadow-color) / .08), 0 8px 22px rgb(var(--v-shadow-color) / .10);
+    --v-e2: 0 2px 6px rgb(var(--v-shadow-color) / .10), 0 22px 54px rgb(var(--v-shadow-color) / .16);
+    --v-radius: 8px;
+    --v-track-tight: -0.015em;
+    /* тетрадь: бумага листа, линейка, поля, обложка */
+    --nb-paper: #fffdf8; --nb-line: #cfd8e8; --nb-margin: #d9786c; --nb-cover: #33508f; --nb-cover-ink: #f6f3ec;
+    /* мелкие кегли не ниже 13 и 15 px */
+    --v-t-xs: clamp(0.8125rem, 0.79rem + 0.15vw, 0.85rem);
+    --v-t-sm: clamp(0.9375rem, 0.9rem + 0.2vw, 1rem);
+  }
+  @media (max-width: 860px) { .v-page { --v-t-xs: 0.9375rem; } }  /* на телефоне мелкий кегль не ниже 15 px */
+  .v-page .v-display { font-weight: 500; }
+  .v-page .v-btn { font-size: var(--v-t-base); }
+  .v-page .v-lede { color: var(--v-ink); }
+  .nowrap { white-space: nowrap; }
+  /* маркер-текстовыделитель: одна форма акцента на всю страницу */
+  .mark { background: linear-gradient(to top, var(--v-accent) 0 .55em, transparent .55em); padding: 0 .12em; margin: 0 -.12em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+  /* ---- шапка: марка, закладки тетради, одна кнопка --------------------------- */
+  .bar { position: fixed; inset: 0 0 auto 0; z-index: 30; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: var(--v-6);
+    padding: var(--v-3) var(--v-gutter); background: rgb(246 243 236 / .88); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid var(--v-hair); }
+  .bar__mark { font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-lg); line-height: 1; text-decoration: none; display: inline-flex; align-items: center; gap: .5em; white-space: nowrap; letter-spacing: -.01em; }
+  .bar__mark i { width: .8em; height: 1em; border-radius: 2px; background: var(--v-accent); position: relative; flex: none; }
+  .bar__mark i::after { content: ""; position: absolute; top: 15%; bottom: 15%; right: 26%; width: 1.5px; background: var(--v-ink); opacity: .8; }
+  .tabs { display: flex; gap: var(--v-5); justify-self: center; font-size: var(--v-t-sm); }
+  .tabs a { white-space: nowrap; text-decoration: none; color: var(--v-ink-soft); padding: .35em 0; border-bottom: 2px solid transparent; transition: color .16s var(--v-ease-out), border-color .16s var(--v-ease-out); }
+  @media (hover: hover) and (pointer: fine) { .tabs a:hover { color: var(--v-ink); border-color: var(--v-accent); } }
+  .bar .v-btn { padding: .72em 1.25em; font-size: var(--v-t-sm); }
+  .bar__btn-short { display: none; }
+  @media (max-width: 1180px) { .tabs a[data-long] { display: none; } }
+  @media (max-width: 1040px) { .bar__btn-long { display: none; } .bar__btn-short { display: inline; } }
+  @media (max-width: 860px) {
+    .bar { grid-template-columns: minmax(0, 1fr) auto; gap: var(--v-3); }
+    .tabs { display: none; }
+    .bar .v-btn { padding: .65em 1em; }
+    /* название длинное: на телефоне в две строки, чтобы кнопка осталась в шапке */
+    .bar__mark { font-size: var(--v-t-base); white-space: normal; line-height: 1.12; align-items: flex-start; }
+    .bar__mark span { max-width: 12em; }
+  }
+
+  /* ---- 1 · обложка: стол ученика с задачами (учебники, тетрадь, калькулятор,
+          наушники, бланк экзамена) на весь экран. Картинка не кропится по бокам:
+          ширина 100 %, прижата к низу, сверху добираем бумагой и растушёвкой ------ */
+  .hero__img { overflow: hidden; }
+  .hero__back { will-change: transform; }
+  /* фото (не рисунок с растушёвкой): закрывает сцену целиком на любых пропорциях экрана, держится за левый нижний угол –
+     на широких экранах кадр как раньше, на узких срезается правый край, линейка уходит вправо от текста */
+  .hero__back img { position: absolute; left: -3%; bottom: -16px; top: 0; width: 106%; height: calc(100% + 16px); max-width: none; object-fit: cover; object-position: 0% 100%; }
+  .hero__scrim { position: absolute; inset: 0; z-index: 2; pointer-events: none;
+    background:
+      linear-gradient(to bottom, rgb(246 243 236 / 1) 0%, rgb(246 243 236 / .9) 12%, rgb(246 243 236 / 0) 30%),
+      linear-gradient(to right, rgb(246 243 236 / .66) 0%, rgb(246 243 236 / .42) 32%, rgb(246 243 236 / .12) 48%, transparent 58%); }
+  .hero__copy { max-width: min(42rem, 50vw); bottom: 0; top: 0; display: flex; flex-direction: column; justify-content: center; padding-top: 3rem; }
+  .hero__label { font-size: var(--v-t-sm); font-weight: 500; color: var(--v-ink-soft); margin-bottom: var(--v-4); }
+  .hero__copy h1 { font-size: clamp(2.3rem, 1rem + 2.6vw, 3.5rem); line-height: 1; }
+  .hero__copy .v-lede { margin-top: var(--v-5); max-width: 40ch; }
+  /* стикеры-задачи поверх фото: по ним ученик узнаёт себя. Появляются по реплике hero, по одному */
+  .tags { position: absolute; inset: 0; z-index: 3; pointer-events: none; margin: 0; padding: 0; list-style: none; }
+  .tag { position: absolute; left: var(--x); top: var(--y); margin: 0; font-family: var(--v-font-display); font-weight: 500; font-size: clamp(1rem, .7rem + .55vw, 1.3rem); line-height: 1; letter-spacing: -.005em; color: var(--v-ink); background: var(--nb-paper); padding: .55em .8em .5em; border-radius: 2px; box-shadow: 0 1px 0 rgb(255 255 255 / .9) inset, var(--v-e1); white-space: nowrap;
+    opacity: 0; transform: rotate(var(--r, 0deg)) translateY(10px) scale(.96);
+    transition: opacity .5s var(--v-ease-out), transform .5s var(--v-ease-out); transition-delay: calc(var(--i, 0) * 90ms + 220ms); }
+  .tag::after { content: ""; position: absolute; left: 12%; right: 12%; bottom: .28em; height: 1px; background: var(--nb-line); }
+  .tags.v-cue-on .tag { opacity: 1; transform: rotate(var(--r, 0deg)); }
+  .hero__cta { margin-top: var(--v-6); display: flex; flex-wrap: wrap; align-items: center; gap: var(--v-4) var(--v-6); }
+  .hero__hint { font-size: var(--v-t-sm); color: var(--v-ink-soft); max-width: 30ch; }
+  .hero__hint b { color: var(--v-ink); font-weight: 600; }
+  /* вторая реплика: цена бездействия */
+  .hero__turn { max-width: min(38rem, 46vw); bottom: 0; top: 0; display: flex; flex-direction: column; justify-content: center; padding-top: 3.5rem; }
+  .hero__turn h2 { font-size: clamp(2rem, .9rem + 2.6vw, 3.6rem); line-height: 1.02; }
+  .hero__turn p { margin-top: var(--v-5); max-width: 40ch; }
+  .hero__turn p b { font-weight: 600; }
+  @media (max-width: 860px) {
+    .hero__back img { left: 0; width: 100%; }
+    .hero__scrim { background: linear-gradient(to bottom, rgb(246 243 236 / 1) 0%, rgb(246 243 236 / .94) 42%, rgb(246 243 236 / .55) 56%, transparent 68%); }
+    .hero__copy, .hero__turn { left: var(--v-gutter); right: var(--v-gutter); top: 5.6rem; bottom: auto; display: block; padding-top: 0; max-width: none; }
+    .hero__label { margin-bottom: var(--v-3); }
+    .hero__copy h1 { font-size: clamp(1.7rem, 1.1rem + 2.8vw, 2.3rem); line-height: 1.04; }
+    .hero__copy .v-lede { font-size: var(--v-t-base); margin-top: var(--v-3); }
+    .hero__cta { margin-top: var(--v-4); flex-direction: column; align-items: flex-start; gap: var(--v-3); }
+    .hero__turn h2 { font-size: clamp(1.7rem, 1.1rem + 2.6vw, 2.3rem); }
+    .hero__turn p { margin-top: var(--v-4); }
+    /* стикеры на телефоне: кучка на столе над тетрадью, в две строки, всё в кадре */
+    .tags { inset: auto var(--v-gutter) 6.5vh var(--v-gutter); display: flex; flex-wrap: wrap; gap: var(--v-2) var(--v-3); align-content: flex-end; }
+    .tag { position: static; font-size: var(--v-t-sm); padding: .5em .7em .45em; }
+  }
+  @media (min-width: 861px) and (max-height: 760px) {
+    .hero__copy h1 { font-size: clamp(2rem, .9rem + 2.4vw, 3.1rem); }
+    .hero__copy .v-lede { margin-top: var(--v-4); font-size: var(--v-t-base); }
+  }
+
+  /* ---- 2 · кому и зачем: три строки с линиями + фото учебников --------------- */
+  .komu { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: var(--v-8) var(--v-9); align-items: center; }
+  .komu__copy .v-label { display: block; margin-bottom: var(--v-5); }
+  .komu__copy > p { margin-top: var(--v-5); color: var(--v-ink-soft); max-width: 44ch; text-wrap: pretty; }
+  .lines { margin-top: var(--v-6); max-width: 52ch; }
+  .lines li { display: grid; grid-template-columns: minmax(9rem, .38fr) 1fr; gap: var(--v-2) var(--v-6); padding: var(--v-4) 0; border-top: 1px solid var(--v-hair); align-items: baseline; }
+  .lines li:last-child { border-bottom: 1px solid var(--v-hair); }
+  .lines b { font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-lg); line-height: 1.2; }
+  .lines span { color: var(--v-ink-soft); font-size: var(--v-t-sm); text-wrap: pretty; }
+  .komu__fig { position: relative; border-radius: var(--v-radius); overflow: hidden; box-shadow: var(--v-e2); background: var(--v-surface); aspect-ratio: 3 / 4; max-width: 26rem; width: 100%; justify-self: end; }
+  .komu__fig img { width: 100%; height: 100%; object-fit: cover; }
+  /* подпись – бумажная записка на свободном дереве в правом нижнем углу фото: читается на любом фоне; циркуль, ластик и блокнот остаются открытыми */
+  .komu__fig figcaption { position: absolute; z-index: 3; right: var(--v-4); bottom: var(--v-4); font-size: var(--v-t-sm); color: var(--v-ink-soft); max-width: 22ch; padding: .8em 1em .85em; background: var(--nb-paper); border-radius: 3px; box-shadow: var(--v-e1); }
+  .komu__fig figcaption b { display: block; color: var(--v-ink); font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-lg); line-height: 1.2; margin-bottom: .3em; }
+  /* направления: четыре листка из той же тетради – бумага, красная линия полей слева, класс мелким акцентом */
+  .dirs { margin-top: var(--v-6); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--v-4); }
+  .dir { position: relative; padding: var(--v-5) var(--v-5) var(--v-5) calc(var(--v-5) + .9rem); background: var(--nb-paper); border-radius: 3px; box-shadow: var(--v-e1), inset 0 0 0 1px rgb(var(--v-shadow-color) / .06); }
+  .dir::before { content: ""; position: absolute; top: 0; bottom: 0; left: .9rem; width: 1px; background: var(--nb-margin); opacity: .8; }
+  .dir__grade { font-size: var(--v-t-sm); font-weight: 600; color: var(--v-accent-deep); font-variant-numeric: tabular-nums; }
+  .dir h3 { margin-top: var(--v-2); font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-lg); line-height: 1.2; }
+  .dir h3 + p { margin-top: var(--v-3); color: var(--v-ink-soft); font-size: var(--v-t-sm); text-wrap: pretty; }
+  @media (max-width: 860px) {
+    .komu { grid-template-columns: 1fr; gap: var(--v-6); }
+    .komu__fig { justify-self: start; max-width: 22rem; }
+    .dirs { grid-template-columns: 1fr; gap: var(--v-3); }
+    /* переход по ссылке к разделу: заголовок не уходит под шапку (шапка на телефоне выше из-за названия в две строки) */
+    #komu, #ceny { scroll-margin-top: 2.25rem; }
+  }
+
+  /* ---- 3 · план: тетрадь, которую листаешь (фирменный ход) --------------------- */
+  .plan { height: 100%; display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: var(--v-8); align-items: center; padding: 5rem var(--v-gutter) 2rem; }
+  .plan__copy .v-label { display: block; margin-bottom: var(--v-5); }
+  .plan__copy h2 { font-size: clamp(1.9rem, .9rem + 2.4vw, 3.3rem); line-height: 1.02; }
+  .plan__copy > p { margin-top: var(--v-5); color: var(--v-ink-soft); max-width: 42ch; text-wrap: pretty; }
+  /* этапы: текущий подсвечен маркером, --on считается от --v-p акта (наследуется) */
+  .stages { margin-top: var(--v-6); display: grid; max-width: 34rem; }
+  .stages li { --on: calc(clamp(0, (var(--v-p, 0) - var(--a)) * 40, 1) - clamp(0, (var(--v-p, 0) - var(--b)) * 40, 1));
+    display: grid; grid-template-columns: 6.5rem 1fr; gap: var(--v-4); align-items: baseline; padding: var(--v-3) 0; border-top: 1px solid var(--v-hair); font-size: var(--v-t-sm); }
+  .stages li:last-child { border-bottom: 1px solid var(--v-hair); }
+  .stages li small { font-size: inherit; color: var(--v-ink-soft); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .stages li span { justify-self: start; position: relative; z-index: 0; color: var(--v-ink); opacity: calc(.55 + .45 * var(--on)); }
+  .stages li span::before { content: ""; position: absolute; z-index: -1; left: -.2em; right: -.2em; top: .55em; height: .6em; background: var(--v-accent); transform-origin: left; transform: scaleX(var(--on)); }
+  .plan__note { margin-top: var(--v-5); font-size: var(--v-t-sm); color: var(--v-ink-soft); max-width: 40ch; }
+  .plan__note b { color: var(--v-ink); font-weight: 600; }
+
+  /* тетрадь: разворот из двух страниц, лист вращается вокруг корешка */
+  .nb { --pg: min(calc((100svh - 9.5rem) / 1.38), 24rem, 21vw); --lh: 1.75rem; --pad: 1.35rem;
+    position: relative; width: calc(var(--pg) * 2); height: calc(var(--pg) * 1.38); margin-left: auto; margin-right: clamp(0rem, 2vw, 2rem);
+    perspective: 2400px; transform-style: preserve-3d; }
+  .nb__base { position: absolute; left: 50%; top: 0; width: 50%; height: 100%; transform: translateZ(-14px); background: var(--nb-paper); border-radius: 0 3px 3px 0; box-shadow: var(--v-e2), inset 0 0 0 1px rgb(var(--v-shadow-color) / .06); }
+  .nb__base::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: rgb(var(--v-shadow-color) / .2); }
+  .leaf { --f: clamp(0, (var(--v-p, 0) - var(--a)) / (var(--b) - var(--a)), 1);
+    position: absolute; left: 50%; top: 0; width: 50%; height: 100%; transform-origin: 0 50%; transform-style: preserve-3d;
+    transform: translateZ(calc((var(--f) * 2 - 1) * var(--i) * 1.5px)) rotateY(calc(var(--f) * -180deg)); will-change: transform; }
+  .leaf__face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; padding: var(--pad) var(--pad) var(--pad) var(--pad); overflow: hidden;
+    background:
+      linear-gradient(to right, transparent calc(100% - 2.6rem), var(--nb-margin) calc(100% - 2.6rem), var(--nb-margin) calc(100% - 2.6rem + 1px), transparent calc(100% - 2.6rem + 1px)),
+      repeating-linear-gradient(to bottom, transparent 0, transparent calc(var(--lh) - 1px), var(--nb-line) calc(var(--lh) - 1px), var(--nb-line) var(--lh)),
+      var(--nb-paper);
+    background-origin: border-box; background-position: 0 0, 0 calc(var(--pad) + var(--lh) * .9), 0 0;
+    box-shadow: inset 0 0 0 1px rgb(var(--v-shadow-color) / .06); border-radius: 0 3px 3px 0; }
+  .leaf__face::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to right, rgb(var(--v-shadow-color) / .22), rgb(var(--v-shadow-color) / .06) 30%, transparent 55%); opacity: calc(var(--f) * 1.6); }
+  .leaf__back { transform: rotateY(180deg); border-radius: 3px 0 0 3px;
+    background:
+      linear-gradient(to right, transparent 2.6rem, var(--nb-margin) 2.6rem, var(--nb-margin) calc(2.6rem + 1px), transparent calc(2.6rem + 1px)),
+      repeating-linear-gradient(to bottom, transparent 0, transparent calc(var(--lh) - 1px), var(--nb-line) calc(var(--lh) - 1px), var(--nb-line) var(--lh)),
+      var(--nb-paper);
+    background-position: 0 0, 0 calc(var(--pad) + var(--lh) * .9), 0 0; padding-left: calc(var(--pad) + 2.2rem); }
+  .leaf__back::after { background: linear-gradient(to left, rgb(var(--v-shadow-color) / .18), rgb(var(--v-shadow-color) / .05) 30%, transparent 55%); opacity: calc((1 - var(--f)) * 1.6); }
+  /* обложка: плотный картон, наклейка с надписью */
+  .leaf--cover .leaf__front { background: var(--nb-cover); box-shadow: var(--v-e2), inset 0 0 0 1px rgb(255 255 255 / .08); color: var(--nb-cover-ink); display: grid; align-content: end; }
+  .leaf--cover .leaf__front::after { background: linear-gradient(to right, rgb(0 0 0 / .32), rgb(0 0 0 / .08) 30%, transparent 55%); }
+  .cover__label { background: var(--nb-paper); color: var(--v-ink); border-radius: 3px; padding: var(--v-4) var(--v-4) var(--v-3); margin-bottom: var(--v-3); display: grid; gap: .35em; box-shadow: 0 1px 2px rgb(0 0 0 / .18); }
+  .cover__label b { font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-lg); line-height: 1.15; }
+  .cover__label span { font-size: var(--v-t-sm); color: var(--v-ink-soft); border-bottom: 1px solid var(--v-hair-strong); padding-bottom: .15em; }
+  .cover__label span i { font-style: normal; color: var(--v-ink); }
+  .cover__brand { font-size: var(--v-t-xs); letter-spacing: var(--v-track-wide); text-transform: uppercase; opacity: .8; }
+  /* страница этапа: заголовок и строки ложатся на линейку */
+  .pg__week { font-size: var(--v-t-sm); color: var(--v-accent-deep); font-weight: 600; line-height: var(--lh); font-variant-numeric: tabular-nums; }
+  .pg__title { font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-lg); line-height: var(--lh); color: var(--v-ink); }
+  .pg__lines { margin-top: var(--lh); }
+  .pg__lines li { line-height: var(--lh); font-size: var(--v-t-sm); color: var(--v-ink); padding-left: 1.1em; position: relative; }
+  .pg__lines li::before { content: ""; position: absolute; left: 0; top: calc(var(--lh) / 2 - .2em); width: .4em; height: .4em; border-radius: 50%; background: var(--v-accent-deep); opacity: .7; }
+  .pg__hw { position: absolute; left: var(--pad); right: calc(2.6rem + .4rem); bottom: var(--pad); line-height: var(--lh); font-size: var(--v-t-sm); color: var(--v-ink); }
+  .pg__hw b { font-weight: 600; }
+  .leaf__back .pg__hw { left: calc(var(--pad) + 2.2rem); right: var(--pad); }
+  .pg__note { font-size: var(--v-t-sm); color: var(--v-ink-soft); line-height: var(--lh); }
+  .pg__blank { display: grid; gap: 0; }
+  .pg__blank span { line-height: var(--lh); font-size: var(--v-t-sm); color: var(--v-ink-soft); display: flex; gap: .6em; align-items: baseline; }
+  .pg__blank span::before { content: ""; flex: 1; order: 1; border-bottom: 1px dotted var(--v-hair-strong); transform: translateY(-.35em); }
+  .pg__blank span i { order: 2; font-style: normal; color: var(--v-ink); font-weight: 600; }
+  /* скобы на корешке */
+  .nb__staple { position: absolute; left: 50%; width: 2px; height: 1rem; margin-left: -1px; background: rgb(var(--v-shadow-color) / .3); border-radius: 2px; z-index: 5; transform: translateZ(12px); }
+  .nb__staple--a { top: 22%; } .nb__staple--b { top: 72%; }
+    @media (max-width: 860px) {
+    .plan { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr); gap: var(--v-4); padding: 5rem var(--v-gutter) 1.5rem; align-items: start; }
+    .plan__copy h2 { font-size: clamp(1.5rem, 1rem + 2.6vw, 2rem); }
+    .plan__copy > p { display: none; }
+    .stages { margin-top: var(--v-4); }
+    .stages li { padding: var(--v-2) 0; grid-template-columns: 5.6rem 1fr; }
+    .plan__copy > .plan__note { display: block; margin-top: var(--v-3); }  /* пометка «программа адаптируется» видна и на телефоне */
+    /* на телефоне видна одна страница: разворот сдвинут так, что правая страница по центру, перевёрнутые листы уходят за край */
+    .nb { --pg: min(calc(100vw - 2 * var(--v-gutter) - 1rem), calc((100svh - 30.5rem) / 1.38), 20rem); --lh: 1.6rem; --pad: 1.1rem; margin: var(--v-3) 0 0 calc(50% - var(--pg) * 1.5); align-self: start; }
+  }
+  @media (max-width: 400px) { .nb { --lh: 1.5rem; } }
+  @media (min-width: 861px) and (max-height: 760px) { .nb { --lh: 1.6rem; --pad: 1.1rem; } }
+  @media (prefers-reduced-motion: reduce) { .leaf { transform: rotateY(calc(var(--f) * -180deg)); } }
+
+  /* ---- 4 · занятие по минутам: лента ------------------------------------------ */
+  .les { height: 100%; display: flex; flex-direction: column; justify-content: center; padding-top: 4rem; }
+  .les__rail { padding-inline: var(--v-gutter); align-items: stretch; gap: clamp(1rem, 2.5vw, 2.5rem); }
+  .card { flex: none; width: clamp(17rem, 24vw, 22rem); display: flex; flex-direction: column; }
+  .card--intro { width: clamp(18rem, 27vw, 26rem); padding-right: var(--v-6); justify-content: center; }
+  .card--intro .v-label { display: block; margin-bottom: var(--v-5); }
+  .card--intro h2 { font-size: clamp(1.9rem, 1rem + 2.2vw, 3rem); line-height: 1.02; }
+  .card--intro p { margin-top: var(--v-5); color: var(--v-ink-soft); max-width: 30ch; text-wrap: pretty; }
+  .card--intro .v-btn { margin-top: var(--v-6); align-self: flex-start; }
+  .card--photo { width: clamp(22rem, 34vw, 32rem); }
+  .card--photo figure { display: flex; flex-direction: column; height: 100%; border-radius: var(--v-radius); overflow: hidden; background: var(--v-surface); box-shadow: var(--v-e1); }
+  .card--photo img { width: 100%; flex: 1; min-height: 0; object-fit: cover; }
+  .card--photo figcaption { padding: var(--v-4) var(--v-5); font-size: var(--v-t-sm); color: var(--v-ink-soft); }
+  .card--photo figcaption b { color: var(--v-ink); font-weight: 600; }
+  /* линейка минут: линия через всю карточку, залит свой отрезок из 45 */
+  .seg { position: relative; display: block; height: 1.4rem; margin-bottom: var(--v-4); }
+  .seg::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--v-hair-strong); }
+  .seg::after { content: ""; position: absolute; top: calc(50% - 2px); height: 5px; border-radius: 3px; background: var(--v-accent); left: calc(var(--from) / 45 * 100%); width: calc((var(--to) - var(--from)) / 45 * 100%); }
+  .card__min { font-size: var(--v-t-sm); color: var(--v-accent-deep); font-weight: 600; font-variant-numeric: tabular-nums; margin-bottom: var(--v-3); }
+  .card h3 { font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-xl); line-height: 1.12; }
+  .card > p { margin-top: var(--v-4); color: var(--v-ink); font-size: var(--v-t-sm); max-width: 30ch; text-wrap: pretty; }
+  /* принцип: короткая линия-маркер сверху – тот же жёлтый, что у этапов плана */
+  .card--rule { padding-top: var(--v-6); position: relative; justify-content: flex-start; }
+  .card--rule::before { content: ""; position: absolute; top: 0; left: 0; width: 3rem; height: 5px; border-radius: 3px; background: var(--v-accent); }
+  .card--intro .v-btn { white-space: normal; }
+  /* заголовок подхода длиннее шаблонного – шире карточка, мельче кегль, чтобы уложиться в 3–4 строки */
+  .card--intro { width: clamp(20rem, 30vw, 28rem); }
+  .card--intro h2 { font-size: clamp(1.7rem, 1rem + 1.5vw, 2.5rem); line-height: 1.06; }
+  .card__who { margin-top: auto; padding-top: var(--v-5); font-size: var(--v-t-sm); color: var(--v-ink-soft); }
+  .card__who b { color: var(--v-ink); font-weight: 600; }
+  @media (pointer: coarse) {
+    .les { height: auto; padding-top: 5rem; padding-bottom: var(--v-6); display: block; }
+    .les__rail { align-items: flex-start; }
+    .card, .card--intro { width: min(74vw, 22rem); }
+    .card--intro { justify-content: flex-start; }
+    .card--photo { width: min(78vw, 24rem); }
+    .card--photo img { aspect-ratio: 4 / 3; flex: none; }
+    .card--intro { padding-right: 0; width: min(86vw, 24rem); }
+    .card--intro .v-btn { white-space: nowrap; padding-inline: 1.1em; }
+    .card--intro h2 { font-size: var(--v-t-xl); }
+    [data-v-stage] { scroll-padding-inline: var(--v-gutter); }
+  }
+  /* телефон: вместо скрытой горизонтальной ленты – столбик, фото и принципы видны без свайпа.
+     Планшет и компьютер не затрагиваются (условие: сенсорный экран и ширина до 600px) */
+  @media (pointer: coarse) and (max-width: 600px) {
+    #podhod .les__rail { flex-direction: column; align-items: stretch; width: auto; gap: var(--v-6); }
+    #podhod .card, #podhod .card--intro, #podhod .card--photo { width: auto; }
+  }
+
+  /* ---- 5 · цены и форматы: строки с линиями ----------------------------------- */
+  .prices { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); grid-template-rows: auto 1fr; gap: var(--v-7) var(--v-9); align-items: start; }
+  .prices__head { grid-column: 1; grid-row: 1; }
+  .prices__head .v-label { display: block; margin-bottom: var(--v-5); }
+  .prices__head p { margin-top: var(--v-5); color: var(--v-ink-soft); max-width: 34ch; text-wrap: pretty; }
+  .terms { margin-top: var(--v-6); display: grid; gap: var(--v-3); font-size: var(--v-t-sm); }
+  .terms li { display: grid; grid-template-columns: auto 1fr; gap: var(--v-3); align-items: baseline; }
+  .terms li::before { content: ""; width: 1.3rem; height: 1px; background: var(--v-accent-deep); align-self: center; }
+  .terms b { font-weight: 600; }
+  .prices__fig { grid-column: 1; grid-row: 2; width: min(100%, 19rem); border-radius: var(--v-radius); overflow: hidden; box-shadow: var(--v-e1); background: var(--v-surface); }
+  .prices__fig img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+  .prices__fig figcaption { padding: var(--v-3) var(--v-4) var(--v-4); font-size: var(--v-t-sm); color: var(--v-ink-soft); }
+  .prices__fig figcaption b { color: var(--v-ink); font-weight: 600; }
+  .prices__list { grid-column: 2; grid-row: 1 / span 2; }
+  .prices__sub { font-size: var(--v-t-sm); font-weight: 600; color: var(--v-ink-soft); margin-bottom: var(--v-3); }
+  .rows li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: var(--v-1) var(--v-6); align-items: baseline; padding: var(--v-5) 0; border-top: 1px solid var(--v-hair); }
+  .rows li:last-child { border-bottom: 1px solid var(--v-hair); }
+  .rows h3 { grid-row: 1; grid-column: 1; font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-lg); line-height: 1.2; }
+  .rows p { grid-row: 2; grid-column: 1; color: var(--v-ink-soft); font-size: var(--v-t-sm); max-width: 46ch; text-wrap: pretty; }
+  .rows .time { grid-row: 1; grid-column: 2; color: var(--v-ink-soft); font-size: var(--v-t-sm); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .rows .price { grid-row: 1; grid-column: 3; font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-lg); color: var(--v-ink); white-space: nowrap; min-width: 7ch; text-align: right; }
+  .cta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--v-4) var(--v-5); margin-top: var(--v-7); }
+  .cta span { color: var(--v-ink-soft); font-size: var(--v-t-sm); max-width: 36ch; text-wrap: pretty; }
+  @media (max-width: 860px) {
+    .prices { grid-template-columns: 1fr; grid-template-rows: none; gap: var(--v-6); }
+    .prices__head, .prices__list, .prices__fig { grid-column: 1; grid-row: auto; }
+    .prices__fig { width: min(100%, 16rem); order: 3; }  /* на телефоне фото после списка, чтобы условия и кнопка шли сразу за текстом */
+    .rows li { grid-template-columns: minmax(0, 1fr) auto; }
+    .rows .time { grid-row: 2; grid-column: 1; }
+    .rows p { grid-row: 3; }
+    .rows .price { grid-column: 2; font-size: var(--v-t-base); }
+  }
+
+  /* ---- 8 · запись: текст слева, форма – лист из той же тетради справа; подвал ниже ---------------- */
+  .fin__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--v-8); align-items: start; }
+  .fin__copy h2 { font-size: clamp(2.2rem, 1rem + 3vw, 4.2rem); line-height: .98; }
+  .fin__copy p { margin-top: var(--v-5); color: var(--v-ink-soft); max-width: 40ch; text-wrap: pretty; }
+  .enroll { position: relative; display: grid; gap: var(--v-5); max-width: 30rem; padding: var(--v-6) var(--v-6) var(--v-6) calc(var(--v-6) + .9rem);
+    background: var(--nb-paper); border-radius: 3px; box-shadow: var(--v-e2), inset 0 0 0 1px rgb(var(--v-shadow-color) / .06); }
+  .enroll::before { content: ""; position: absolute; top: 0; bottom: 0; left: .9rem; width: 1px; background: var(--nb-margin); opacity: .8; }
+  .field { display: grid; gap: var(--v-2); }
+  .field label { font-size: var(--v-t-sm); font-weight: 600; color: var(--v-ink); }
+  .field input, .field select { box-sizing: border-box; width: 100%; min-height: 3rem; padding: .65em .85em; font: inherit; font-size: max(16px, 1rem); color: var(--v-ink);
+    background: var(--v-surface); border: 1px solid var(--v-hair-strong); border-radius: 6px; }
+  .field select:invalid { color: var(--v-ink-soft); }
+  .field select option { color: var(--v-ink); }
+  .field input:focus-visible, .field select:focus-visible { outline: 2px solid var(--v-accent); outline-offset: 1px; border-color: var(--v-ink-soft); }
+  /* движок сбрасывает фон у <button> (.v-page button) – возвращаем жёлтую кнопку, как у ссылок .v-btn */
+  .v-page .enroll button.v-btn { justify-self: start; background: var(--v-accent); color: var(--v-accent-ink); font-weight: 600; }
+  .enroll__note { font-size: var(--v-t-xs); color: var(--v-ink-soft); }
+  .enroll__status { padding: var(--v-3) var(--v-4); border-left: 3px solid var(--v-accent); background: rgb(233 182 56 / .16); font-size: var(--v-t-sm); color: var(--v-ink); }
+  .enroll__status[hidden] { display: none; }
+  .foot { margin-top: var(--v-9); padding-top: var(--v-6); border-top: 1px solid var(--v-hair); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--v-5) var(--v-8);
+    font-size: var(--v-t-sm); color: var(--v-ink-soft); }
+  .foot__brand b { display: block; margin-bottom: var(--v-1); font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-lg); color: var(--v-ink); }
+  .foot__nav ul { display: flex; flex-wrap: wrap; gap: var(--v-2) var(--v-5); margin: 0; padding: 0; list-style: none; }
+  .foot__nav a { color: var(--v-ink); text-underline-offset: .2em; display: inline-block; padding-block: .25em; }
+  .foot__demo { grid-column: 1 / -1; font-size: var(--v-t-xs); }
+  @media (max-width: 860px) {
+    .fin__inner { grid-template-columns: 1fr; gap: var(--v-6); }
+    .fin__copy h2 { font-size: clamp(1.8rem, 1.2rem + 3vw, 2.4rem); }
+    .enroll { max-width: none; padding: var(--v-5) var(--v-5) var(--v-5) calc(var(--v-5) + .9rem); }
+    .foot { grid-template-columns: 1fr; margin-top: var(--v-8); }
+    .foot__nav ul { flex-direction: column; gap: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="v-page">
+  <span data-v-progress></span>
+
+  <header class="bar">
+    <a class="bar__mark" href="#top"><i aria-hidden="true"></i><span>Математика — формула успеха</span></a>
+    <nav class="tabs" aria-label="Разделы">
+      <a href="#komu">Направления</a>
+      <a href="#plan">План занятий</a>
+      <a href="#podhod">Подход</a>
+      <a href="#ceny">Стоимость</a>
+      <a href="#zapis" data-long>Запись</a>
+    </nav>
+    <a class="v-btn" href="#zapis"><span class="bar__btn-long">Записаться на пробное</span><span class="bar__btn-short">Записаться</span></a>
+  </header>
+
+  <main>
+
+    <!-- 1 · ОБЛОЖКА: стол ученика с задачами на весь экран (учебники, тетрадь, калькулятор,
+         наушники, бланк экзамена) + стикеры-задачи поверх фото. Оффер слева по формуле
+         «что + для кого + одно УТП», кнопка над сгибом. Вторая реплика – цена бездействия -->
+    <section id="top" data-v-act="pin" data-v-span="1.3" aria-label="Математика — формула успеха">
+      <div data-v-stage>
+        <div class="v-layer hero__back" data-v-parallax="-0.3">
+          <div class="v-fill hero__img">
+            <picture>
+              <source media="(max-width: 860px)" srcset="assets/hero-m.webp">
+              <img src="assets/hero.webp" srcset="assets/hero-1200.webp 1200w, assets/hero.webp 1920w" sizes="100vw" alt="Деревянная линейка и транспортир на листе с чертежами" width="1920" height="1080" fetchpriority="high">
+            </picture>
+          </div>
+        </div>
+        <div class="hero__scrim" aria-hidden="true"></div>
+
+        <!-- стикеры-задачи: с чем приходят. Позиции в % сцены, поворот – как записка на столе.
+             Рассажены по свободному листу по обе стороны от диагональной линейки (hero = Pexels 6281140) -->
+        <ul class="tags" data-v-cue="0 1 0 0" data-v-rise="0" aria-label="С чем приходят: ОГЭ, ЕГЭ, алгебра, геометрия, контрольная, 5–11 класс">
+          <li class="tag" style="--x: 50%; --y: 39%; --r: -5deg; --i: 0">ЕГЭ</li>
+          <li class="tag" style="--x: 67%; --y: 41%; --r: 4deg; --i: 1">ОГЭ</li>
+          <li class="tag" style="--x: 72%; --y: 20%; --r: 3deg; --i: 2">геометрия</li>
+          <li class="tag" style="--x: 58%; --y: 50%; --r: -3deg; --i: 3">алгебра</li>
+          <li class="tag" style="--x: 46%; --y: 70%; --r: 2deg; --i: 4">контрольная</li>
+          <li class="tag" style="--x: 60%; --y: 27%; --r: -4deg; --i: 5">5–11 класс</li>
+        </ul>
+
+        <div class="v-copy v-copy--lead hero__copy" data-v-cue="0 1 0 0">
+          <p class="hero__label">Индивидуально, онлайн · 5–11 классы</p>
+          <h1 class="v-display v-display--xl" data-v-kinetic="lines">Обучение математике без пробелов в знаниях — с понятным планом обучения</h1>
+          <p class="v-lede">Помощь в освоении школьной программы, подготовка к контрольным работам, ОГЭ и ЕГЭ. Индивидуальные занятия онлайн с учётом уровня подготовки ученика.</p>
+          <div class="hero__cta">
+            <a class="v-btn" href="#zapis" data-v-magnet="0.2" data-v-rise="0">Записаться на пробное занятие</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 · НАПРАВЛЕНИЯ ОБУЧЕНИЯ: четыре листа-карточки по классам + фото учебников -->
+    <section class="v-section v-section--tight" data-v-act="flow" id="komu" aria-label="Направления обучения">
+      <div class="v-wrap komu">
+        <div class="komu__copy" data-v-in data-v-stagger="70">
+          <h2 class="v-display v-display--lg">Направления обучения</h2>
+          <ul class="dirs">
+            <li class="dir"><p class="dir__grade">5–8 классы</p><h3>Школьная математика</h3><p>Объяснение сложных тем, устранение пробелов в знаниях, подготовка к контрольным работам.</p></li>
+            <li class="dir"><p class="dir__grade">9 класс</p><h3>Подготовка к ОГЭ</h3><p>Повторение программы, разбор экзаменационных заданий, тренировка решения типовых задач.</p></li>
+            <li class="dir"><p class="dir__grade">10–11 классы</p><h3>Алгебра и геометрия</h3><p>Углублённое изучение тем, развитие математического мышления, помощь со сложными задачами.</p></li>
+            <li class="dir"><p class="dir__grade">11 класс</p><h3>Подготовка к ЕГЭ</h3><p>Систематизация знаний, решение экзаменационных заданий, индивидуальная подготовка.</p></li>
+          </ul>
+        </div>
+        <figure class="komu__fig" data-v-in>
+          <img src="assets/komu.webp" alt="Блокнот, циркуль, ластик и грифели на деревянном столе" width="1000" height="1333" loading="lazy">
+          <figcaption><b>Индивидуальные занятия онлайн</b>С учётом уровня подготовки ученика.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 3 · ПЛАН: тетрадь, которую листаешь. Фирменный ход: листы вращаются от --v-p, без JS.
+         Пять этапов (1 · 2–3 · 4–5 · 6–7 · 8): обложка + пять листов, переворачиваются обложка и четыре листа.
+         Окна переворота равномерно на 0–1, окна подсветки этапов – от середины одного переворота до середины следующего -->
+    <section data-v-act="pin" data-v-span="3" data-v-drift="#faf8f3" id="plan" aria-label="Пример плана обучения на 8 недель">
+      <div data-v-stage>
+        <div class="plan">
+          <div class="plan__copy" data-v-cue="0 1 0 0" data-v-rise="0">
+            <h2 class="v-display">Пример плана обучения на 8&nbsp;недель</h2>
+            <ol class="stages" aria-label="Этапы плана">
+              <li style="--a: .075; --b: .295"><small>Неделя 1</small><span>Уровень знаний</span></li>
+              <li style="--a: .295; --b: .505"><small>Недели 2–3</small><span>Повторение</span></li>
+              <li style="--a: .505; --b: .715"><small>Недели 4–5</small><span>Новые темы</span></li>
+              <li style="--a: .715; --b: .91"><small>Недели 6–7</small><span>Закрепление</span></li>
+              <li style="--a: .91; --b: 1.2"><small>Неделя 8</small><span>Итоги</span></li>
+            </ol>
+            <p class="plan__note">Программа и продолжительность обучения адаптируются к уровню знаний и целям ученика.</p>
+          </div>
+
+          <div class="nb" aria-hidden="true">
+            <div class="nb__base"></div>
+
+            <!-- листы: --a/--b – окно поворота по прогрессу акта; последний лист (неделя 8) не переворачивается -->
+            <div class="leaf leaf--cover" style="--i: 1; --a: .02; --b: .13">
+              <div class="leaf__face leaf__front">
+                <div class="cover__label">
+                  <b>План на 8 недель</b>
+                  <span>Предмет: <i>математика</i></span>
+                  <span>Ученик:</span>
+                  <span>Цель:</span>
+                </div>
+                <p class="cover__brand">Математика — формула успеха</p>
+              </div>
+              <div class="leaf__face leaf__back">
+                <p class="pg__note">Это пример. Программа и продолжительность обучения адаптируются к уровню знаний и целям ученика.</p>
+              </div>
+            </div>
+
+            <div class="leaf" style="--i: 2; --a: .24; --b: .35">
+              <div class="leaf__face leaf__front">
+                <p class="pg__week">Неделя 1</p>
+                <p class="pg__title">Уровень знаний</p>
+                <ul class="pg__lines">
+                  <li>Определение уровня</li>
+                  <li>Выявление пробелов</li>
+                </ul>
+              </div>
+              <div class="leaf__face leaf__back"></div>
+            </div>
+
+            <div class="leaf" style="--i: 3; --a: .45; --b: .56">
+              <div class="leaf__face leaf__front">
+                <p class="pg__week">Недели 2–3</p>
+                <p class="pg__title">Повторение</p>
+                <ul class="pg__lines">
+                  <li>Повторение основных тем</li>
+                  <li>Устранение пробелов</li>
+                </ul>
+              </div>
+              <div class="leaf__face leaf__back"></div>
+            </div>
+
+            <div class="leaf" style="--i: 4; --a: .66; --b: .77">
+              <div class="leaf__face leaf__front">
+                <p class="pg__week">Недели 4–5</p>
+                <p class="pg__title">Новые темы</p>
+                <ul class="pg__lines">
+                  <li>Освоение новых тем</li>
+                  <li>Решение задач</li>
+                </ul>
+              </div>
+              <div class="leaf__face leaf__back"></div>
+            </div>
+
+            <div class="leaf" style="--i: 5; --a: .86; --b: .96">
+              <div class="leaf__face leaf__front">
+                <p class="pg__week">Недели 6–7</p>
+                <p class="pg__title">Закрепление</p>
+                <ul class="pg__lines">
+                  <li>Закрепление материала</li>
+                  <li>Контрольные задания</li>
+                  <li>Экзаменационные задания</li>
+                </ul>
+              </div>
+              <div class="leaf__face leaf__back"></div>
+            </div>
+
+            <div class="leaf" style="--i: 6; --a: 1.5; --b: 1.6">
+              <div class="leaf__face leaf__front">
+                <p class="pg__week">Неделя 8</p>
+                <p class="pg__title">Итоги</p>
+                <ul class="pg__lines">
+                  <li>Оценка прогресса</li>
+                  <li>Дальнейший план обучения</li>
+                </ul>
+              </div>
+              <div class="leaf__face leaf__back"></div>
+            </div>
+
+            <span class="nb__staple nb__staple--a" aria-hidden="true"></span>
+            <span class="nb__staple nb__staple--b" aria-hidden="true"></span>
+                  </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · ПОДХОД К ОБУЧЕНИЮ: лента из вводной карточки, фото и четырёх принципов. На тач – горизонтальная прокрутка пальцем.
+         Принципы не последовательность, поэтому без номеров: у каждого листка верхняя линия-маркер -->
+    <section data-v-act="pan" data-v-span="2.2" id="podhod" aria-label="Подход к обучению">
+      <div data-v-stage>
+        <div class="les">
+          <div class="les__rail" data-v-pan="0.03">
+            <div class="card card--intro" data-v-cue="0 1 0 0" data-v-rise="0">
+              <h2 class="v-display">У каждого ученика — свой путь к пониманию математики</h2>
+              <a class="v-btn" href="#zapis">Записаться на пробное занятие</a>
+            </div>
+
+            <div class="card card--photo">
+              <figure>
+                <!-- изображение сгенерировано ИИ (см. sources.md) -->
+                <img src="assets/formuly.webp" alt="Ученик чертит по линейке в тетради в клетку, рядом учебник и ручка" width="1536" height="864" loading="lazy">
+                <figcaption><b>Индивидуальные занятия онлайн</b> с учётом уровня подготовки ученика.</figcaption>
+              </figure>
+            </div>
+
+            <div class="card card--rule">
+              <h3>Индивидуальный подход</h3>
+              <p>Определяем уровень знаний и составляем программу с учётом целей ученика.</p>
+            </div>
+
+            <div class="card card--rule">
+              <h3>Понятные объяснения</h3>
+              <p>Разбираем сложные темы последовательно, от простого к сложному.</p>
+            </div>
+
+            <div class="card card--rule">
+              <h3>Практика на каждом занятии</h3>
+              <p>Закрепляем материал решением задач и самостоятельными упражнениями.</p>
+            </div>
+
+            <div class="card card--rule">
+              <h3>Контроль прогресса</h3>
+              <p>Регулярно проверяем усвоение материала и при необходимости корректируем программу.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · СТОИМОСТЬ: без тарифов – условия обсуждаются индивидуально; три фактора из текста ТЗ -->
+    <section class="v-section v-section--tight" data-v-act="flow" data-v-drift="#f6f3ec" id="ceny" aria-label="Стоимость занятий">
+      <div class="v-wrap prices">
+        <div class="prices__head" data-v-in data-v-stagger="60">
+          <h2 class="v-display v-display--md">Стоимость занятий</h2>
+          <p>Продолжительность и стоимость занятий обсуждаются индивидуально с учётом целей ученика, уровня подготовки и выбранной программы обучения.</p>
+        </div>
+        <figure class="prices__fig" data-v-in>
+          <img src="assets/stack.webp" alt="Лупа над формулами и интегралами в учебнике" width="1000" height="1333" loading="lazy">
+        </figure>
+        <div class="prices__list">
+          <h3 class="prices__sub" data-v-in>От чего зависят условия</h3>
+          <ul class="rows" data-v-in data-v-stagger="50">
+            <li><h3>Цели ученика</h3><p>Повышение успеваемости, подготовка к ОГЭ или ЕГЭ, устранение пробелов в знаниях.</p></li>
+            <li><h3>Уровень подготовки</h3><p>Определяется в начале занятий, вместе с пробелами в знаниях.</p></li>
+            <li><h3>Программа обучения</h3><p>Адаптируется к уровню знаний и целям ученика.</p></li>
+          </ul>
+          <div class="cta" data-v-in>
+            <a class="v-btn" href="#zapis">Узнать условия занятий</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 · ЗАПИСЬ: демонстрационная форма + подвал. Обычная секция (не pin), чтобы форма помещалась на телефоне.
+         Форма ничего не отправляет и не хранит: method="dialog" вне <dialog> не делает запроса даже без JS,
+         у полей нет name (в адрес ничего не попадёт), autocomplete="off"; скрипт внизу только показывает сообщение -->
+    <section class="v-section" data-v-act="flow" id="zapis" aria-labelledby="zapis-title">
+      <div class="v-wrap fin">
+        <div class="fin__inner">
+          <div class="fin__copy" data-v-in data-v-stagger="60">
+            <h2 class="v-display" id="zapis-title">Начните с пробного занятия</h2>
+            <p>Расскажите, в каком классе учится ребёнок и какие задачи нужно решить. Подберём подходящий план обучения.</p>
+          </div>
+
+          <form class="enroll" id="enroll" method="dialog" autocomplete="off" aria-describedby="enroll-note" data-v-in>
+            <div class="field">
+              <label for="enroll-name">Имя</label>
+              <input id="enroll-name" type="text" required maxlength="60" autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="enroll-grade">Класс ученика</label>
+              <select id="enroll-grade" required>
+                <option value="" selected disabled>Выберите класс</option>
+                <option>5 класс</option>
+                <option>6 класс</option>
+                <option>7 класс</option>
+                <option>8 класс</option>
+                <option>9 класс</option>
+                <option>10 класс</option>
+                <option>11 класс</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="enroll-goal">Цель занятий</label>
+              <select id="enroll-goal" required>
+                <option value="" selected disabled>Выберите цель</option>
+                <option>Повышение успеваемости</option>
+                <option>Подготовка к ОГЭ</option>
+                <option>Подготовка к ЕГЭ</option>
+                <option>Устранение пробелов в знаниях</option>
+              </select>
+            </div>
+            <button class="v-btn" type="submit">Отправить заявку</button>
+            <p class="enroll__note" id="enroll-note">Форма демонстрационная: введённые данные не сохраняются и никуда не передаются.</p>
+            <p class="enroll__status" role="status" aria-live="polite" hidden></p>
+          </form>
+        </div>
+
+        <footer class="foot">
+          <div class="foot__brand">
+            <b>Математика — формула успеха</b>
+            <span>Индивидуальные занятия математикой онлайн для учеников 5–11 классов</span>
+          </div>
+          <nav class="foot__nav" aria-label="Разделы сайта">
+            <ul>
+              <li><a href="#komu">Направления обучения</a></li>
+              <li><a href="#plan">План занятий</a></li>
+              <li><a href="#podhod">Подход к обучению</a></li>
+              <li><a href="#ceny">Стоимость</a></li>
+              <li><a href="#zapis">Запись</a></li>
+            </ul>
+          </nav>
+          <p class="foot__demo">Демонстрационный сайт для портфолио. Услуги и запись представлены в качестве примера.</p>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="vibe.js"></script>
+<script>
+  // На телефоне пины короче: data-v-span правим до монтирования.
+  if (window.matchMedia('(max-width: 860px)').matches) {
+    document.getElementById('top').setAttribute('data-v-span', '1.2');
+    document.getElementById('plan').setAttribute('data-v-span', '2.8');
+  }
+  Vibe.mount(document.querySelector('.v-page'));
+
+  // Демо-форма записи: только показывает сообщение. Ничего не отправляет (нет fetch/action),
+  // не сохраняет (нет localStorage/cookie) и очищает поля.
+  (function () {
+    var form = document.getElementById('enroll');
+    var status = form.querySelector('.enroll__status');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      status.textContent = 'Это демонстрационная форма. Отправка заявок не подключена.';
+      status.hidden = false;
+      form.reset();
+    });
+  })();
+  // Фирменный ход «тетрадь, которую листаешь» живёт в CSS: каждый лист считает --f от --v-p акта
+  // (переменная наследуется с секции) и поворачивается rotateY вокруг корешка. JS не нужен.
+</script>
+</body>
+</html>
