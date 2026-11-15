@@ -367,8 +367,12 @@
     #top [data-v-stage] { display: flex; flex-direction: column; }
     #top .hero__copy { position: relative; inset: auto; order: 1; flex: none; margin: max(5.6rem, calc(var(--bar-h, 0px) + 1.3rem)) var(--v-gutter) 0; }
     #top .tags { position: relative; inset: auto; order: 2; flex: none; margin: auto var(--v-gutter) 6.5vh; padding-top: var(--v-4); }
-    /* план: колонка недель в em – растёт вместе с текстом, «Недели 2–3» не наезжают на этап */
-    .stages li { grid-template-columns: 6em 1fr; }
+    /* план: ширина колонки недель – по самой длинной подписи («Недели 2–3») при любом размере текста,
+       промежуток до этапа постоянный 16px; все строки делят одну колонку (subgrid), названия этапов стоят ровно.
+       Не меньше 5.6rem – при обычном тексте всё как раньше. В браузерах без subgrid остаётся 6em */
+    .stages { grid-template-columns: max-content 1fr; column-gap: var(--v-4); }
+    .stages li { grid-template-columns: 6em 1fr; grid-column: 1 / -1; grid-template-columns: subgrid; }
+    .stages li small { min-width: 5.6rem; }
     .plan { padding-top: max(5rem, calc(var(--bar-h, 0px) + .7rem)); }
   }
 </style>
