@@ -350,6 +350,27 @@
     .foot { grid-template-columns: 1fr; margin-top: var(--v-8); }
     .foot__nav ul { flex-direction: column; gap: 0; }
   }
+
+  /* ---- телефон и крупный текст ------------------------------------------------
+     Встроенные браузеры (например, Telegram на Android) по системной настройке увеличивают
+     только буквы, а не страницу целиком. Раскладка должна это выдерживать: ничего не запрещаем,
+     а даём тексту место. Только до 600px – планшет и компьютер не затрагиваются. */
+  @media (max-width: 600px) {
+    /* кнопки: длинная надпись переносится на вторую строку, а не уходит за край экрана */
+    .v-page main .v-btn { white-space: normal; max-width: 100%; text-align: center; }
+    /* шапка: чуть меньше кегль названия и отступы, чтобы название оставалось в две строки */
+    .bar { padding-block: var(--v-2); gap: var(--v-2); }
+    .bar__mark { font-size: var(--v-t-sm); gap: .35em; }
+    .bar .v-btn { padding: .6rem .8rem; }
+    /* первый экран: текст и наклейки в одной колонке – наклейки всегда ниже текста, не поверх.
+       --bar-h – реальная высота шапки (ставит скрипт внизу); при обычном тексте отступ прежний, 5.6rem */
+    #top [data-v-stage] { display: flex; flex-direction: column; }
+    #top .hero__copy { position: relative; inset: auto; order: 1; flex: none; margin: max(5.6rem, calc(var(--bar-h, 0px) + 1.3rem)) var(--v-gutter) 0; }
+    #top .tags { position: relative; inset: auto; order: 2; flex: none; margin: auto var(--v-gutter) 6.5vh; padding-top: var(--v-4); }
+    /* план: колонка недель в em – растёт вместе с текстом, «Недели 2–3» не наезжают на этап */
+    .stages li { grid-template-columns: 6em 1fr; }
+    .plan { padding-top: max(5rem, calc(var(--bar-h, 0px) + .7rem)); }
+  }
 </style>
 </head>
 <body>
@@ -673,6 +694,28 @@
     document.getElementById('plan').setAttribute('data-v-span', '2.8');
   }
   Vibe.mount(document.querySelector('.v-page'));
+
+  // Телефон и крупный текст: высота шапки – в переменную --bar-h (от неё отступ первого экрана и плана).
+  // Наклейки, которым не хватило места под текстом, прячем целиком, чтобы не торчали обрезанными у края экрана.
+  (function () {
+    var page = document.querySelector('.v-page'), bar = document.querySelector('.bar');
+    var stage = document.querySelector('#top [data-v-stage]'), tags = document.querySelector('#top .tags');
+    var phone = window.matchMedia('(max-width: 600px)');
+    function fit() {
+      page.style.setProperty('--bar-h', bar.offsetHeight + 'px');
+      var limit = stage.clientHeight;
+      Array.prototype.forEach.call(tags.children, function (t) {
+        t.style.visibility = phone.matches && tags.offsetTop + t.offsetTop + t.offsetHeight > limit ? 'hidden' : '';
+      });
+    }
+    fit();
+    if ('ResizeObserver' in window) {
+      var ro = new ResizeObserver(fit);
+      ro.observe(bar); ro.observe(stage); ro.observe(document.querySelector('#top .hero__copy'));
+    }
+    window.addEventListener('resize', fit);
+    if (document.fonts) document.fonts.ready.then(fit);
+  })();
 
   // Демо-форма записи: только показывает сообщение. Ничего не отправляет (нет fetch/action),
   // не сохраняет (нет localStorage/cookie) и очищает поля.
